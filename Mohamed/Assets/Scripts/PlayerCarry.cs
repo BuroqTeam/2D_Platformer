@@ -6,7 +6,9 @@ public class PlayerCarry : MonoBehaviour
     public GameEvent PickupTrash;
     public GameEvent DropTrashTrue;
     public GameEvent DropTrashFalse;
-
+    public GameObject pickupEffectPrefab;
+    public GameObject correctEffectPrefab;
+    public GameObject wrongEffectPrefab;   
 
     private Trash nearbyTrash;
     private Trash carriedTrash;
@@ -34,6 +36,8 @@ public class PlayerCarry : MonoBehaviour
         trash.transform.SetParent(this.transform); // Trash playerga yopishadi
         trash.transform.localPosition = new Vector3(0, 1.2f, 0); // Player ustida ko‘rsatish
         PickupTrash.Raise();
+        // Show pickup particle
+        Instantiate(pickupEffectPrefab, transform.position, Quaternion.identity);
     }
 
     public void DropTrash(TrashBin bin)
@@ -43,13 +47,16 @@ public class PlayerCarry : MonoBehaviour
             Debug.Log("Correctly sorted!");
             Destroy(carriedTrash.gameObject); // Axlat yo‘q qilinadi
             DropTrashTrue.Raise();
-          
+            // Show correct particle at bin
+            Instantiate(correctEffectPrefab, bin.transform.position, Quaternion.identity);
         }
         else
         {
             Debug.Log("Wrong bin!");          
             // Penalty yoki xato effekt
             DropTrashFalse.Raise();
+            // Show wrong particle at bin
+            Instantiate(wrongEffectPrefab, bin.transform.position, Quaternion.identity);
         }
        
     }
