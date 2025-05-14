@@ -12,7 +12,7 @@ public class PlayerCarry : MonoBehaviour
 
     private Trash nearbyTrash;
     private Trash carriedTrash;
-    private TrashBin bin;
+    public TrashBin bin;
 
     private void Update()
     {
@@ -20,11 +20,11 @@ public class PlayerCarry : MonoBehaviour
         {
             if (carriedTrash == null && nearbyTrash != null)
             {
-                PickUpTrash(nearbyTrash);
+                PickUpTrash(nearbyTrash);                
             }
-            else if (carriedTrash != null)
+            else if (carriedTrash != null && bin != null)
             {
-                DropTrash(bin);
+                DropTrash(bin);                
             }
         }
     }
@@ -44,7 +44,7 @@ public class PlayerCarry : MonoBehaviour
     {               
         if (carriedTrash.trashType == bin.acceptedType)
         {
-            Debug.Log("Correctly sorted!");
+            Debug.Log("Correct bin!");
             Destroy(carriedTrash.gameObject); // Axlat yo‘q qilinadi
             DropTrashTrue.Raise();
             // Show correct particle at bin
@@ -84,7 +84,7 @@ public class PlayerCarry : MonoBehaviour
         }
         else if (other.CompareTag("Bin"))
         {
-            if (bin == other.GetComponent<Trash>())
+            if (bin == other.GetComponent<TrashBin>())
             {
                 bin = null;
             }            
