@@ -7,8 +7,10 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRb;
     private SpriteRenderer playerSp;
     private Animator playerAn;
+    private AudioSource playerAudio;
 
     public bool isGrounded;
+    [SerializeField] private AudioClip jumpAudioClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         playerSp = GetComponent<SpriteRenderer>();
         playerAn = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     public void Move(float horizontalInput)
@@ -25,13 +28,29 @@ public class PlayerMovement : MonoBehaviour
 
         if (horizontalInput > 0)
         {
-            playerSp.flipX = false;
+            playerSp.flipX = false;                  
         }
-        else if(horizontalInput < 0)
+        else if (horizontalInput < 0)
         {
-            playerSp.flipX = true;
+            playerSp.flipX = true;          
         }
-    }
+
+        // Handle audio
+        if (Mathf.Abs(horizontalInput) > 0.01f)
+        {
+            if (!playerAudio.isPlaying)
+            {
+                playerAudio.Play();
+            }
+        }
+        else
+        {
+            if (playerAudio.isPlaying || !isGrounded)
+            {
+                playerAudio.Stop();
+            }
+        }
+    }    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -55,8 +74,8 @@ public class PlayerMovement : MonoBehaviour
         {
             //playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            
-            
+            playerAudio.PlayOneShot(jumpAudioClip);
+
         }
     }
 
