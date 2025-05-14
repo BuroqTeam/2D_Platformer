@@ -1,3 +1,4 @@
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
     private AudioSource playerAudio;
 
     public bool isGrounded;
-    [SerializeField] private AudioClip jumpAudioClip;
+    public GameEvent JumpEvent;
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Handle audio
-        if (Mathf.Abs(horizontalInput) > 0.01f)
+        if (Mathf.Abs(horizontalInput) > 0.01f && isGrounded)
         {
             if (!playerAudio.isPlaying)
             {
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (playerAudio.isPlaying || !isGrounded)
+            if (playerAudio.isPlaying)
             {
                 playerAudio.Stop();
             }
@@ -64,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isGrounded = false;
+            isGrounded = false;            
         }
     }
 
@@ -74,8 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
             //playerRb.linearVelocity = new Vector2(playerRb.linearVelocity.x, jumpForce);
             playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            playerAudio.PlayOneShot(jumpAudioClip);
-
+            JumpEvent.Raise();
         }
     }
 

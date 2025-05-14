@@ -1,3 +1,4 @@
+using ScriptableObjectArchitecture;
 using UnityEngine;
 
 
@@ -10,8 +11,8 @@ public class Player : MonoBehaviour
     private PlayerMovement playerMovement;
     [SerializeField]
     private PlayerCarry playerCarry;
-
    
+
 
     private void Start()
     {                
@@ -26,7 +27,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            playerMovement.Jump();
+            playerMovement.Jump();           
         }
     }
 

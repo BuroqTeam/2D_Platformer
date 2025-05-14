@@ -356,7 +356,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 15
   isGrounded: 0
-  jumpAudioClip: {fileID: 8300000, guid: 938789d5a8d7ec84dab964b090e2591c, type: 3}
+  JumpEvent: {fileID: 11400000, guid: 615ff0aa2e2d1b442a78e848d785f060, type: 2}
 --- !u!114 &7297879044076709744
 MonoBehaviour:
   m_ObjectHideFlags: 0
