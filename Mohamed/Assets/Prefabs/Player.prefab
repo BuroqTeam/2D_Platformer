@@ -374,7 +374,8 @@ MonoBehaviour:
   DropTrashFalse: {fileID: 11400000, guid: f3af6c17f97ba564a8de9cad302eac85, type: 2}
   pickupEffectPrefab: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2, type: 3}
   correctEffectPrefab: {fileID: 8771972552311404799, guid: bbf9e36a48d6c5648a13889afab076fd, type: 3}
-  wrongEffectPrefab: {fileID: 3766476905876805631, guid: afa69131c11840c4d82a27aabb5d984e, type: 3}
+  wrongEffectPrefab: {fileID: 3420678246303560549, guid: 80f6d0876cdfce642afce38c18673c47, type: 3}
+  bin: {fileID: 0}
 --- !u!82 &1676418461268373713
 AudioSource:
   m_ObjectHideFlags: 0

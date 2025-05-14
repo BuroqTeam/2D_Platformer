@@ -44,7 +44,7 @@ public class PlayerCarry : MonoBehaviour
     {               
         if (carriedTrash.trashType == bin.acceptedType)
         {
-            Debug.Log("Correct bin!");
+            
             Destroy(carriedTrash.gameObject); // Axlat yo‘q qilinadi
             DropTrashTrue.Raise();
             // Show correct particle at bin
@@ -52,7 +52,7 @@ public class PlayerCarry : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wrong bin!");          
+              
             // Penalty yoki xato effekt
             DropTrashFalse.Raise();
             // Show wrong particle at bin
