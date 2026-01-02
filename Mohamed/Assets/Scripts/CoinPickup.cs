@@ -5,6 +5,7 @@ public class CoinPickup : MonoBehaviour
 {
    
     public GameEvent PickupCoin;
+    public IntReference CoinCount;
     public GameObject particlePrefab;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,7 +18,7 @@ public class CoinPickup : MonoBehaviour
             // GameManager.Instance.AddCoins(value);
 
             // Hozircha oddiy log:
-           
+            CoinCount.Value++;
             PickupCoin.Raise();
             Instantiate(particlePrefab, transform.position, Quaternion.identity);
             // Tangani yo‘q qilamiz

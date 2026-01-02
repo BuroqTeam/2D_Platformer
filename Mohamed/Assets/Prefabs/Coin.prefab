@@ -151,4 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PickupCoin: {fileID: 11400000, guid: d55da5ab71a4b374483833834bb43689, type: 2}
+  CoinCount:
+    _useConstant: 0
+    _constantValue: 0
+    _variable: {fileID: 11400000, guid: 4afab4885ad57ab478c7d4523e7a90b7, type: 2}
   particlePrefab: {fileID: 1429954232896169633, guid: 83036083a4ebcd34f98131bd3cf6f4d2, type: 3}
