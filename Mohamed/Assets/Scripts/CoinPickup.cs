@@ -5,6 +5,7 @@ public class CoinPickup : MonoBehaviour
 {
    
     public GameEvent PickupCoin;
+    public GameObject particlePrefab;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,7 +19,7 @@ public class CoinPickup : MonoBehaviour
             // Hozircha oddiy log:
            
             PickupCoin.Raise();
-
+            Instantiate(particlePrefab, transform.position, Quaternion.identity);
             // Tangani yo‘q qilamiz
             Destroy(gameObject);
         }
