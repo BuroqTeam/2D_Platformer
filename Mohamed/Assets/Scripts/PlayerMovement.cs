@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded;
     public GameEvent JumpEvent;
-   
+    
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

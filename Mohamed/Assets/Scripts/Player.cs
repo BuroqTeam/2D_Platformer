@@ -11,7 +11,8 @@ public class Player : MonoBehaviour
     private PlayerMovement playerMovement;
     [SerializeField]
     private PlayerCarry playerCarry;
-   
+
+    public bool CanMove { get; private set; } = true;
 
 
     private void Start()
@@ -22,6 +23,11 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (!CanMove)
+        {            
+            return; // stop all movement logic
+        }
+
         float horizontalInput = Input.GetAxis("Horizontal");
         playerMovement.Move(horizontalInput);
 
@@ -31,6 +37,9 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void EnableMovement() => CanMove = true;
+    public void DisableMovement() => CanMove = false;
 
-   
+
+
 }
